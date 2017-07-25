@@ -1,0 +1,72 @@
+replicaCount: 1
+component: "logstash-internal"
+image:
+  repository: 044366197691.dkr.ecr.eu-west-1.amazonaws.com/demo/logstash-internal
+  tag: 2
+  pullPolicy: IfNotPresent
+service:
+  name: logstash-internal
+  type: ClusterIP
+resources:
+  limits:
+    cpu: 800m
+    memory: 1512Mi
+  requests:
+    cpu: 100m
+    memory: 1024Mi
+heap:
+  max: 1024m
+  min: 512m
+metrics:
+  port: 9600
+beats: 
+  port: 5044
+
+config: 
+  logstash.conf: |+ 
+    input {
+      beats {
+        port => 5044
+      }
+      tcp {
+        port => 5050
+      }
+    }
+
+    filter {
+      if [type] == "kube-logs" {
+        json {
+          source => "message"
+          tag_on_failure => ["failed_json_parse_0"]
+        }
+
+        mutate {
+          rename => ["log", "message"]
+        }
+
+        json {
+          source => "message"
+          tag_on_failure => ["failed_json_parse_1"]
+        }
+
+        date {
+          match => ["time", "ISO8601"]
+          remove_field => ["time"]
+        }
+
+        grok {
+            match => { "source" => "/var/log/containers/%{DATA:pod_name}_%{DATA:namespace}_%{GREEDYDATA:container_name}-%{DATA:container_id}.log" }
+            remove_field => ["source"]
+        }
+      }
+    }
+
+    output {
+      #stdout { codec => rubydebug }
+      elasticsearch {
+        hosts => "infra-es1-es.infra"
+        index => "logstash-%{+YYYY.MM.dd}"
+      }
+    }
+
+

@@ -1,0 +1,33 @@
+rules:
+  - host: kibana.infra.k8sdemo.iplops.je-labs.com
+    http:
+      paths:
+      - backend:  
+          serviceName: infra-kibana-kibana-service
+          servicePort: 5601  
+  - host: grafana.infra.k8sdemo.iplops.je-labs.com
+    http:
+      paths:
+      - backend:  
+          serviceName: infra-grafana-grafana
+          servicePort: 3000
+  - host: kube-ops-view.infra.k8sdemo.iplops.je-labs.com
+    http:
+      paths:
+      - backend:
+          serviceName: infra-kube-ops-view-kube-ops-view
+          servicePort: 80
+  - host: prometheus.infra.k8sdemo.iplops.je-labs.com
+    http:
+      paths:
+      - backend:  
+          serviceName: prometheus-op-prometheus 
+          servicePort: 9090
+  - host: alertmanager.infra.k8sdemo.iplops.je-labs.com
+    http:
+      paths:
+      - backend:  
+          serviceName: prometheus-op-alertmanager
+          servicePort: 9093
+
+

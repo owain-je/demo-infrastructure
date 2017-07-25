@@ -1,0 +1,16 @@
+image:
+  repository: apsops/filebeat-kubernetes
+  tag: v0.2
+  pullPolicy: IfNotPresent
+resources:
+  limits:
+    cpu: 50m
+    memory: 50Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi
+logstash:
+  host: infra-ls-logstash-internal.infra
+  port: 5044
+loglevel: info 
+terminationGracePeriodSeconds: 30

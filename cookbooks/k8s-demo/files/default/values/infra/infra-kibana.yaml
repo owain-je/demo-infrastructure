@@ -1,0 +1,21 @@
+replicaCount: 1
+name: kibana
+image:
+  repository: kibana
+  tag: 5.5.0
+  pullPolicy: IfNotPresent
+service:
+  name: kibana
+  type: ClusterIP
+  externalPort: 5601
+  internalPort: 5601
+resources:
+  limits:
+    cpu: 1
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+elasticsearchUrl: http://infra-es1-es.infra:9200
+

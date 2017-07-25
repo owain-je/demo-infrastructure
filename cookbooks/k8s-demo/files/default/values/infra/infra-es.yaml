@@ -1,0 +1,30 @@
+Name: es
+#PeerPort: 2380
+#ClientPort: 2379
+Component: "elasticsearch"
+Image: "quay.io/pires/docker-elasticsearch-kubernetes"
+ImageTag: "5.5.0"
+ImagePullPolicy: "Always"
+ClientReplicas: 2
+ClientCpuRequests: "100m"
+ClientMemoryRequests: "1024Mi"
+ClientCpuLimits: "500m"
+ClientMemoryLimits: "1024Mi"
+ClientHeapSize: "512m"
+
+MasterReplicas: 2
+MasterCpuRequests: "100m"
+MasterMemoryRequests: "1024Mi"
+MasterCpuLimits: "500m"
+MasterMemoryLimits: "1024Mi"
+MasterHeapSize: "512m"
+
+DataReplicas: 1
+DataCpuRequests: "250m"
+DataMemoryRequests: "1Gi"
+DataCpuLimits: "1"
+DataMemoryLimits: "1Gi"
+DataHeapSize: "512m"
+DataStorage: "50Gi"
+DataStorageClass: "gp2"
+DataStorageClassVersion: "alpha"

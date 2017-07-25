@@ -1,0 +1,7 @@
+rules:
+- host: piapp.dev.k8sdemo.iplops.je-labs.com
+  http:
+    paths:
+    - backend:  
+        serviceName: dev-piapp-piapp
+        servicePort: 5001
