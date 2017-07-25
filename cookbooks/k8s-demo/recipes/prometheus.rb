@@ -22,11 +22,11 @@ namespace = "infra"
 #	action [:upgrade]
 #end
  
-helm_package "je-charts/prometheus-servicemonitor" do 
-	values_files File.join(node[cookbook_name]['path'],namespace,"prometheus-servicemonitor.yaml")
-	release_name "prometheus-sm"
-	version "0.1.0"
-	kube_context node[cookbook_name]['context']
-	namespace namespace
-	action [:upgrade]
-end 
+#helm_package "je-charts/prometheus-servicemonitor" do 
+#	values_files File.join(node[cookbook_name]['path'],namespace,"prometheus-servicemonitor.yaml")
+#	release_name "prometheus-sm"
+#	version "0.1.0"
+#	kube_context node[cookbook_name]['context']
+#	namespace namespace
+#	action [:upgrade]
+#end 
