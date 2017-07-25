@@ -21,13 +21,13 @@ rules:
     http:
       paths:
       - backend:  
-          serviceName: prometheus-op-prometheus 
+          serviceName: prometheus-operated
           servicePort: 9090
   - host: alertmanager.infra.k8sdemo.iplops.je-labs.com
     http:
       paths:
       - backend:  
-          serviceName: prometheus-op-alertmanager
+          serviceName: alertmanager-operated
           servicePort: 9093
 
 
