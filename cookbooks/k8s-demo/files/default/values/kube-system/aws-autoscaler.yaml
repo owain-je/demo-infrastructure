@@ -17,7 +17,8 @@ extraArgs: {}
 ##
 nodeSelector: {}
 
-podAnnotations: {}
+podAnnotations: 
+  iam.amazonaws.com/role: pod-aws-autoscaler 
 replicaCount: 1
 
 resources: {}

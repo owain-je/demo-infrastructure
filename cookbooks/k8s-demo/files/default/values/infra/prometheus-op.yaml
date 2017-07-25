@@ -67,7 +67,7 @@ alertmanager:
 
   ## Number of Alertmanager replicas desired
   ##
-  replicaCount: 3
+  replicaCount: 1
 
   ## Resource limits & requests
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
@@ -182,7 +182,7 @@ prometheus:
 
   ## Number of Prometheus replicas desired
   ##
-  replicaCount: 3
+  replicaCount: 1
 
   ## Resource limits & requests
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
@@ -190,10 +190,10 @@ prometheus:
   resources: 
     limits:
       cpu: 1
-      memory: 2Gi
+      memory: 1Gi
     requests:
       cpu: 500m
-      memory: 1Gi
+      memory: 128Mi
 
   ## How long to retain metrics
   ##
@@ -341,5 +341,5 @@ prometheus:
     class: default
     resources:
       requests:
-        storage: 150Gi
+        storage: 50Gi
 #    selector: {}
