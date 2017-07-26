@@ -20,10 +20,10 @@ include_recipe "#{cookbook_name}::dev"
 include_recipe "#{cookbook_name}::kube-system"
 include_recipe "#{cookbook_name}::infra"
 include_recipe "#{cookbook_name}::prometheus"
+include_recipe "#{cookbook_name}::prod"
 #include_recipe "#{cookbook_name}::test"
 #include_recipe "#{cookbook_name}::uat"
-#include_recipe "#{cookbook_name}::prod"
-#Clean up
+
 
 directory node[cookbook_name]['path'] do
   recursive  true
